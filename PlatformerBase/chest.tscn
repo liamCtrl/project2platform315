@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqrj48ikaod5q"]
+
+[ext_resource type="Script" path="res://chest.gd" id="1_2prla"]
+[ext_resource type="Texture2D" uid="uid://600ts0hpvioa" path="res://prototyping_assets/item/chain.png" id="2_c1moe"]
+[ext_resource type="Texture2D" uid="uid://wru7xxb8ggp0" path="res://prototyping_assets/item/01.png" id="2_q7ced"]
+[ext_resource type="Texture2D" uid="uid://bafkac22owmo" path="res://prototyping_assets/item/02.png" id="4_ye0ub"]
+[ext_resource type="Texture2D" uid="uid://dt1e2cuvxiony" path="res://prototyping_assets/item/03.png" id="5_71laq"]
+[ext_resource type="Texture2D" uid="uid://dwp5shinrdqf1" path="res://prototyping_assets/item/04.png" id="6_a8vws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_550ct"]
+size = Vector2(20, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvdxp"]
+size = Vector2(33, 27.25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ka3y1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q7ced")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ye0ub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_71laq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a8vws")
+}],
+"loop": true,
+"name": &"coin_idle",
+"speed": 5.0
+}]
+
+[node name="Chest" type="RigidBody2D"]
+position = Vector2(-279.5, 24)
+script = ExtResource("1_2prla")
+
+[node name="ChestCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -3)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_550ct")
+
+[node name="ChestArea2D" type="Area2D" parent="."]
+
+[node name="ChestAreaCollisionShape2D" type="CollisionShape2D" parent="ChestArea2D"]
+position = Vector2(-0.5, -5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_xvdxp")
+
+[node name="chain_piece1" type="Sprite2D" parent="."]
+position = Vector2(-15.5, -1)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_c1moe")
+
+[node name="chain_piece2" type="Sprite2D" parent="."]
+position = Vector2(-2, -18)
+rotation = 1.5708
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_c1moe")
+
+[node name="chain_piece3" type="Sprite2D" parent="."]
+position = Vector2(12, -1.5)
+rotation = 6.28319
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_c1moe")
+
+[node name="chain_piece4" type="Sprite2D" parent="."]
+position = Vector2(-2.5, 10)
+rotation = 1.5708
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_c1moe")
+
+[node name="coinAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.5, -3)
+sprite_frames = SubResource("SpriteFrames_ka3y1")
+animation = &"coin_idle"
+frame_progress = 0.102262
+
+[connection signal="body_entered" from="ChestArea2D" to="." method="_on_chest_area_2d_body_entered"]

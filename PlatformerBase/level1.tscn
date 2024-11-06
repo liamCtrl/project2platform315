@@ -1,0 +1,139 @@
+[gd_scene load_steps=27 format=4 uid="uid://bhcaup6f5wm1f"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_273ar"]
+[ext_resource type="PackedScene" uid="uid://cqrj48ikaod5q" path="res://chest.tscn" id="3_2o7wb"]
+[ext_resource type="Script" path="res://GameController.gd" id="3_okkwb"]
+[ext_resource type="PackedScene" uid="uid://wokgixou3e57" path="res://key.tscn" id="4_3bc6e"]
+[ext_resource type="Texture2D" uid="uid://l5em81qvdq5a" path="res://prototyping_assets/BG Image.png" id="5_1o11b"]
+[ext_resource type="TileSet" uid="uid://mliyyuu4vpdo" path="res://prototyping_assets/level_tile_set.tres" id="6_4ys8g"]
+[ext_resource type="Texture2D" uid="uid://cala0evd8q2kn" path="res://prototyping_assets/player/Idle 01.png" id="7_53pdg"]
+[ext_resource type="Texture2D" uid="uid://bqn7te778spx5" path="res://prototyping_assets/player/Idle 02.png" id="8_28a74"]
+[ext_resource type="PackedScene" uid="uid://ca5novjh6oniy" path="res://enemy.tscn" id="8_qcpvr"]
+[ext_resource type="Texture2D" uid="uid://cr6f1808l1m08" path="res://prototyping_assets/player/Idle 03.png" id="9_k5kls"]
+[ext_resource type="Texture2D" uid="uid://bmch4bjyx0h1e" path="res://prototyping_assets/player/Idle 04.png" id="10_7n7qc"]
+[ext_resource type="Texture2D" uid="uid://xfsxbavrcs2u" path="res://prototyping_assets/player/Idle 05.png" id="11_rht44"]
+[ext_resource type="Texture2D" uid="uid://dhfo7vgpahm0l" path="res://prototyping_assets/player/Jump 01.png" id="12_w0d08"]
+[ext_resource type="Texture2D" uid="uid://bvhem2tbjuhgi" path="res://prototyping_assets/player/Jump 02.png" id="13_17i0h"]
+[ext_resource type="Texture2D" uid="uid://hugq4ksk3og3" path="res://prototyping_assets/player/Jump 03.png" id="14_tdjqe"]
+[ext_resource type="Texture2D" uid="uid://eo85oxft6gqh" path="res://prototyping_assets/player/Run 01.png" id="15_h3cgx"]
+[ext_resource type="Texture2D" uid="uid://caqk8hw87gh7f" path="res://prototyping_assets/player/Run 03.png" id="16_2o7k5"]
+[ext_resource type="Texture2D" uid="uid://gksotkaubde5" path="res://prototyping_assets/player/Run 02.png" id="17_7rwqp"]
+[ext_resource type="Texture2D" uid="uid://clsjwjkhbd0m1" path="res://prototyping_assets/player/Run 04.png" id="18_cfln2"]
+[ext_resource type="Texture2D" uid="uid://dkqah2rru4v4x" path="res://prototyping_assets/player/Run 05.png" id="19_42mhd"]
+[ext_resource type="Texture2D" uid="uid://cxi7iloaou0pd" path="res://prototyping_assets/player/Run 06.png" id="20_grg2w"]
+[ext_resource type="TileSet" uid="uid://cmx7ji25bkpn5" path="res://prototyping_assets/ui_tile_set.tres" id="22_sobb1"]
+[ext_resource type="AudioStream" uid="uid://dyc80hddo2m3b" path="res://prototyping_assets/sound/impactGeneric_light_002.ogg" id="23_ofbk8"]
+[ext_resource type="AudioStream" uid="uid://clu8b17p8nbi7" path="res://prototyping_assets/sound/footstep_grass_002.ogg" id="24_m14ln"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14u3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_53pdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_28a74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_k5kls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7n7qc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rht44")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_w0d08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_17i0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tdjqe")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_h3cgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2o7k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7rwqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_cfln2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_42mhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_grg2w")
+}],
+"loop": false,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1rbs"]
+height = 25.0
+
+[node name="platformer" type="Node2D"]
+position = Vector2(270, 241)
+scale = Vector2(2, 2)
+script = ExtResource("3_okkwb")
+key_resource = ExtResource("4_3bc6e")
+chest_resource = ExtResource("3_2o7wb")
+enemy_resource = ExtResource("8_qcpvr")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(57, 42)
+scale = Vector2(2.52, 2.52)
+texture = ExtResource("5_1o11b")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-67.5, 28)
+script = ExtResource("1_273ar")
+
+[node name="PlayerAnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_14u3p")
+animation = &"jump"
+
+[node name="PlayerCollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_b1rbs")
+
+[node name="Key" parent="." instance=ExtResource("4_3bc6e")]
+position = Vector2(-288.5, -72.5)
+scale = Vector2(0.7, 0.7)
+
+[node name="levelTileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(1.5, 0)
+tile_map_data = PackedByteArray("AAANAAcAAwABAAAAAAAOAAcAAwACAAAAAAAPAAcAAwADAAAAAAAQAAcAAwAFAAAAAAAJAAcAAwAAAAAAAAAKAAcAAwABAAAAAAALAAcAAwACAAAAAAAMAAcAAwADAAAAAAAJAAgAAwAAAAEAAAAJAAkAAwAAAAIAAAAKAAgAAwABAAEAAAAKAAkAAwABAAIAAAALAAgAAwACAAEAAAALAAkAAwACAAIAAAAOAAgAAwADAAEAAAAOAAkAAwADAAIAAAAPAAgAAwAEAAEAAAAPAAkAAwAEAAIAAAAQAAgAAwAFAAEAAAAQAAkAAwAFAAIAAAAMAAgAAwACAAEAAAAMAAkAAwACAAIAAAANAAgAAwADAAEAAAANAAkAAwADAAIAAAAJAAoAAwAAAAUAAAAKAAoAAwABAAUAAAALAAoAAwACAAUAAAAMAAoAAwADAAUAAAANAAoAAwAEAAUAAAAOAAoAAwADAAUAAAAPAAoAAwAEAAUAAAAQAAoAAwAFAAUAAAAKAAAAAwAIAAAAAAAKAAEAAwAIAAQAAAALAAAAAwAJAAAAAAALAAEAAwAJAAQAAAANAP7/AwAIAAAAAAANAP//AwAIAAQAAAAOAP7/AwAJAAAAAAAOAP//AwAJAAQAAAAQAAAAAwAIAAAAAAAQAAEAAwAIAAQAAAARAAAAAwAJAAAAAAARAAEAAwAJAAQAAAAQAAIAAwAIAAUAAAARAAIAAwAJAAUAAAANAAAAAwAIAAUAAAAOAAAAAwAJAAUAAAAKAAIAAwAIAAUAAAALAAIAAwAJAAUAAAATAP//AwAAAAgAAAATAAAAAwAAAAkAAAAUAP//AwABAAgAAAAUAAAAAwABAAkAAAAVAP//AwACAAgAAAAVAAAAAwACAAkAAAAWAP//AwADAAgAAAAWAAAAAwADAAkAAAAXAP//AwAEAAgAAAAXAAAAAwAEAAkAAAAYAP//AwAFAAgAAAAYAAAAAwAFAAkAAAD6/wMAAwAAAAAAAAD6/wQAAwAAAAEAAAD6/wUAAwAAAAIAAAD6/wYAAwAAAAMAAAD6/wcAAwAAAAUAAAD7/wMAAwABAAAAAAD7/wQAAwABAAEAAAD7/wUAAwABAAIAAAD7/wYAAwABAAMAAAD7/wcAAwABAAUAAAD8/wMAAwACAAAAAAD8/wQAAwACAAEAAAD8/wUAAwACAAIAAAD8/wYAAwACAAMAAAD8/wcAAwACAAUAAAD9/wMAAwADAAAAAAD9/wQAAwADAAEAAAD9/wUAAwADAAIAAAD9/wYAAwADAAMAAAD9/wcAAwADAAUAAAD+/wMAAwAEAAAAAAD+/wQAAwACAAEAAAD+/wUAAwACAAIAAAD+/wYAAwACAAMAAAD+/wcAAwAEAAUAAAD//wMAAwABAAAAAAD//wQAAwADAAEAAAD//wUAAwADAAIAAAD//wYAAwADAAMAAAD//wcAAwABAAUAAAAAAAMAAwACAAAAAAAAAAQAAwACAAEAAAAAAAUAAwACAAIAAAAAAAYAAwACAAMAAAAAAAcAAwACAAUAAAABAAMAAwADAAAAAAABAAQAAwADAAEAAAABAAUAAwADAAIAAAABAAYAAwADAAMAAAABAAcAAwADAAUAAAACAAMAAwAEAAAAAAACAAQAAwACAAEAAAACAAUAAwACAAIAAAACAAYAAwACAAMAAAACAAcAAwAEAAUAAAADAAMAAwABAAAAAAADAAQAAwADAAEAAAADAAUAAwADAAIAAAADAAYAAwADAAMAAAADAAcAAwADAAUAAAAEAAMAAwACAAAAAAAEAAQAAwAEAAEAAAAEAAUAAwAEAAIAAAAEAAYAAwAEAAMAAAAEAAcAAwAEAAUAAAAFAAMAAwAFAAAAAAAFAAQAAwAFAAEAAAAFAAUAAwAFAAIAAAAFAAYAAwAFAAMAAAAFAAcAAwAFAAUAAAABAAoAAwABAAgAAAABAAsAAwABAAkAAAACAAoAAwACAAgAAAACAAsAAwACAAkAAAADAAoAAwADAAgAAAADAAsAAwADAAkAAAAEAAoAAwAEAAgAAAAEAAsAAwAEAAkAAAAFAAoAAwAFAAgAAAAFAAsAAwAFAAkAAAAAAAoAAwAAAAgAAAAAAAsAAwAAAAkAAAA=")
+tile_set = ExtResource("6_4ys8g")
+
+[node name="enemy" parent="." instance=ExtResource("8_qcpvr")]
+position = Vector2(-279.5, 88)
+
+[node name="uiTileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD6//r/AAAEAAMAAAD7//r/AAAFAAMAAAD8//r/AAAGAAMAAAA=")
+tile_set = ExtResource("22_sobb1")
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="hit" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("23_ofbk8")
+
+[node name="walk" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("24_m14ln")
+
+[node name="Chest" parent="." instance=ExtResource("3_2o7wb")]

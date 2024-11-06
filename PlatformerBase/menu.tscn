@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://ksdfrxgbbufq"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_c8wyw"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_c8wyw")
+
+[node name="buttonlevel1" type="Button" parent="."]
+offset_left = 522.0
+offset_top = 355.0
+offset_right = 584.0
+offset_bottom = 386.0
+scale = Vector2(2.0024, 1.25274)
+text = "Level 1"
+
+[node name="title" type="Label" parent="."]
+offset_left = 360.0
+offset_top = 198.0
+offset_right = 505.0
+offset_bottom = 221.0
+scale = Vector2(3.12, 4.08)
+text = "Bad Platformer 2.0"
+
+[connection signal="pressed" from="buttonlevel1" to="." method="_on_buttonlevel_1_pressed"]
