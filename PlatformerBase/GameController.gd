@@ -3,7 +3,7 @@ extends Node
 @export var key_resource : PackedScene
 @export var chest_resource : PackedScene
 @export var enemy_resource : PackedScene
-@onready var level2 = preload("res://level2.tscn") 
+@onready var level2 = load("res://level2.tscn") as PackedScene
 var keyVal = 0
 
 func key_collected() -> void:
@@ -14,8 +14,10 @@ func key_collected() -> void:
 		add_child(colKey)
 		
 func chest_unlock() -> void:
-	#get_tree().change_scene_to_packed(level2)
-	pass
+	if keyVal == 1:
+		get_tree().change_scene_to_packed(level2)
+	
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

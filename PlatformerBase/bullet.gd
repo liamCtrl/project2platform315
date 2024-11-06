@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var mainmenu = load("res://menu.tscn") as PackedScene
+@onready var mainmenu = preload("res://menu.tscn") as PackedScene
 
 @export var speed = -150
 var direction = Vector2(1,0)

@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var level1 = load("res://level1.tscn") as PackedScene
+@onready var level1 = load("res://level1.tscn")
 
 func _on_buttonlevel_1_pressed() -> void:
 	if level1 : 

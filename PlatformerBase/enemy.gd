@@ -8,7 +8,6 @@ func _process(delta: float) -> void:
 	$enemyAnimatedSprite2D.play("idle")
 
 func _on_player_detector_body_entered(body):
-	hit.play
 	if body.name == "Player":
 		queue_free()
 

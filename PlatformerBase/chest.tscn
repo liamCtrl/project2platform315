@@ -11,7 +11,7 @@
 size = Vector2(20, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvdxp"]
-size = Vector2(33, 27.25)
+size = Vector2(48, 22.6667)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ka3y1"]
 animations = [{
@@ -45,7 +45,7 @@ shape = SubResource("RectangleShape2D_550ct")
 [node name="ChestArea2D" type="Area2D" parent="."]
 
 [node name="ChestAreaCollisionShape2D" type="CollisionShape2D" parent="ChestArea2D"]
-position = Vector2(-0.5, -5)
+position = Vector2(-0.5, -16)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_xvdxp")
 
